@@ -62,7 +62,7 @@ namespace DrawingTest
 
         private void RemovePoint(object sender, MouseButtonEventArgs e)
         {
-            if (points.Count <= 3)
+            if (points.Count <= 2)
                 return;
             Line SelectedLine = sender as Line;
             int idx = pointcontrols.IndexOf(SelectedLine);
