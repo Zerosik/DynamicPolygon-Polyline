@@ -17,7 +17,6 @@ namespace DrawingTest
         List<Point> points = new List<Point>(); //값
         List<Line> pointcontrols = new List<Line>();//ui에 그려지는 point값, points와 인덱스 공유
         List<Line> lines = new List<Line>(); //그려진 선들
-
         Polygon polygon = new Polygon();
         int SelectedPointIndex = -1;
         Point PreviewPoint;
@@ -65,9 +64,9 @@ namespace DrawingTest
                     return;
 
                 }
-                double MoveX = e.GetPosition(this).X - PreviewPoint.X;
-                double MoveY = e.GetPosition(this).Y - PreviewPoint.Y;
-
+                Point newPoint = e.GetPosition(this);
+                double MoveX = newPoint.X - PreviewPoint.X;
+                double MoveY = newPoint.Y - PreviewPoint.Y;
 
                 points = points.Select(p =>
                 {
@@ -75,27 +74,15 @@ namespace DrawingTest
                     p.Y = p.Y + MoveY;
                     return p;
                 }).ToList();
-
-                //PointCollection pc = new PointCollection(
-                //    polygon.Points.Select(p => {
-                //    p.X = p.X + MoveX;
-                //    p.Y = p.Y + MoveY;
-                //    return p; 
-                //}));
-                //polygon.Points = pc; 
                 PreviewPoint = e.GetPosition(this);
-                DrawPoint(points );
+                DrawPoint(points);
                 DrawLine(points, true);
             }
         }
 
         private void DrawPolygon()
         {
-            PointCollection pc = new PointCollection();
-            foreach(Point p in points)
-            {
-                pc.Add(p);
-            }
+            PointCollection pc = new PointCollection(points);
             polygon.Points = pc;
         }
 

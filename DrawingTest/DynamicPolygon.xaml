@@ -10,16 +10,10 @@
         <Canvas Name="canvas" MouseMove="canvas_MouseMove" ClipToBounds="False"
                 Background="#999999" MouseLeftButtonUp="canvas_MouseLeftButtonUp">
             <Path  Stretch="Fill" Fill="LimeGreen" 
-              Data="M 
-                   10,80 
-                   20,80 
-                   20,30
-                   30,30
-                   15,0 
-                   0,30
+              Data="M 10,80 20,80 20,30
+                   30,30 15,0 0,30
                    10,30 Z"
               HorizontalAlignment="Center" RenderTransformOrigin=".5,.5"  >
-
                 <Path.RenderTransform>
                     <RotateTransform Angle="180" />
                 </Path.RenderTransform>
